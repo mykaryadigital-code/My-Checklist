@@ -174,8 +174,11 @@ fun MainAppScaffold(
                         icon = { Icon(imageVector = tab.icon, contentDescription = tab.title) },
                         label = { Text(tab.title, fontSize = 11.sp, fontWeight = if (currentTabIndex == index) FontWeight.Bold else FontWeight.Normal) },
                         colors = NavigationBarItemDefaults.colors(
-                            selectedIconColor = MaterialTheme.colorScheme.onPrimary,
-                            indicatorColor = MaterialTheme.colorScheme.primary
+                            selectedIconColor = RosewoodPrimary,
+                            selectedTextColor = RosewoodPrimary,
+                            unselectedIconColor = androidx.compose.ui.graphics.Color(0xFF8E8E93),
+                            unselectedTextColor = androidx.compose.ui.graphics.Color(0xFF8E8E93),
+                            indicatorColor = androidx.compose.ui.graphics.Color(0xFFFDE8EF)
                         ),
                         modifier = Modifier.testTag(tab.tag)
                     )

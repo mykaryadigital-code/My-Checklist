@@ -151,6 +151,10 @@ fun JournalScreen(
                 items(items = journals, key = { it.id }) { entry ->
                     JournalItemCard(entry = entry, onDelete = { onDeleteJournal(entry) })
                 }
+
+                item {
+                    Spacer(modifier = Modifier.height(100.dp))
+                }
             }
         }
 

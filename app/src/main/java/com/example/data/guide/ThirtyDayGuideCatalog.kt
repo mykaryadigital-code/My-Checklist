@@ -2,7 +2,7 @@ package com.example.data.guide
 
 data class DayGuide(
     val dayNumber: Int,
-    val weekPhase: Int, // 1, 2, 3, 4
+    val weekPhase: Int, // 1..5
     val phaseTitle: String,
     val title: String,
     val actionItem: String,
@@ -17,7 +17,7 @@ object ThirtyDayGuideCatalog {
         DayGuide(
             dayNumber = 1,
             weekPhase = 1,
-            phaseTitle = "Minggu 1: Niat & Sempadan (Kenali Niat Sebenar)",
+            phaseTitle = "Minggu 1: Niat & Sempadan (Hari 1 - 7)",
             title = "Tetapkan Sempadan & Matlamat Ta'aruf",
             actionItem = "Tegaskan bahawa perkenalan ini adalah untuk mencari pasangan hidup yang halal, bukan untuk 'buang masa' atau 'dating kosong'.",
             questionToAsk = "\"Apa matlamat perkenalan awak kali ini, dan berapa lama tempoh yang awak sasarkan untuk ke fasa perkahwinan?\"",
@@ -27,7 +27,7 @@ object ThirtyDayGuideCatalog {
         DayGuide(
             dayNumber = 2,
             weekPhase = 1,
-            phaseTitle = "Minggu 1: Niat & Sempadan (Kenali Niat Sebenar)",
+            phaseTitle = "Minggu 1: Niat & Sempadan (Hari 1 - 7)",
             title = "Semak Ketelusan Status Perkahwinan",
             actionItem = "Minta pengesahan statusnya secara sopan: bujang, duda rasmi (dengan surat cerai sah), atau sebaliknya.",
             questionToAsk = "\"Boleh kongsikan status perkahwinan terkini awak dan adakah semua urusan dokumentasi mahkamah telah selesai sepenuhnya?\"",
@@ -37,7 +37,7 @@ object ThirtyDayGuideCatalog {
         DayGuide(
             dayNumber = 3,
             weekPhase = 1,
-            phaseTitle = "Minggu 1: Niat & Sempadan (Kenali Niat Sebenar)",
+            phaseTitle = "Minggu 1: Niat & Sempadan (Hari 1 - 7)",
             title = "Ketahui Rutin Seharian & Disiplin Diri",
             actionItem = "Perhatikan jadual hariannya: adakah dia mempunyai rutin yang berdisiplin antara solat, kerja, dan rehat?",
             questionToAsk = "\"Bagaimana rutin harian awak daripada bangun pagi sampai malam? Apa aktiviti wajib awak setiap hari?\"",
@@ -47,7 +47,7 @@ object ThirtyDayGuideCatalog {
         DayGuide(
             dayNumber = 4,
             weekPhase = 1,
-            phaseTitle = "Minggu 1: Niat & Sempadan (Kenali Niat Sebenar)",
+            phaseTitle = "Minggu 1: Niat & Sempadan (Hari 1 - 7)",
             title = "Uji Pendengar Yang Baik (Bukan Narsistik)",
             actionItem = "Bercakap tentang topik santai dan perhatikan adakah dia mendengar dengan empati atau suka memotong dan bercakap tentang dirinya sahaja.",
             questionToAsk = "\"Apa pandangan awak tentang hobi saya ini? Awak ada minat yang serupa tak?\"",
@@ -57,7 +57,7 @@ object ThirtyDayGuideCatalog {
         DayGuide(
             dayNumber = 5,
             weekPhase = 1,
-            phaseTitle = "Minggu 1: Niat & Sempadan (Kenali Niat Sebenar)",
+            phaseTitle = "Minggu 1: Niat & Sempadan (Hari 1 - 7)",
             title = "Selidiki Pengajaran Daripada Masa Lalu",
             actionItem = "Beri ruang kepadanya untuk menceritakan apa yang dipelajarinya daripada fasa hidup yang lalu.",
             questionToAsk = "\"Apa kesilapan atau kelemahan terbesar yang awak pernah buat dulu yang awak tekad tak mahu ulang lagi?\"",
@@ -67,7 +67,7 @@ object ThirtyDayGuideCatalog {
         DayGuide(
             dayNumber = 6,
             weekPhase = 1,
-            phaseTitle = "Minggu 1: Niat & Sempadan (Kenali Niat Sebenar)",
+            phaseTitle = "Minggu 1: Niat & Sempadan (Hari 1 - 7)",
             title = "Uji Sempadan Privasi & Rasa Hormat",
             actionItem = "Nyatakan waktu anda sibuk dengan urusan kerja/ibadah dan tidak dapat membalas mesej.",
             questionToAsk = "\"Saya ada urusan penting petang ini, saya akan hubungi awak semula malam nanti ya.\"",
@@ -77,7 +77,7 @@ object ThirtyDayGuideCatalog {
         DayGuide(
             dayNumber = 7,
             weekPhase = 1,
-            phaseTitle = "Minggu 1: Niat & Sempadan (Kenali Niat Sebenar)",
+            phaseTitle = "Minggu 1: Niat & Sempadan (Hari 1 - 7)",
             title = "Kaji Konsistensi Hari 1 hingga 7",
             actionItem = "Buka Checklist dalam aplikasi ini dan tanda skor awal bagi aspek Sahsiah & Niat.",
             questionToAsk = "\"Bagaimana rasa minggu pertama kita berbual? Ada apa-apa yang awak rasa nak bincangkan lebih terbuka?\"",
@@ -89,7 +89,7 @@ object ThirtyDayGuideCatalog {
         DayGuide(
             dayNumber = 8,
             weekPhase = 2,
-            phaseTitle = "Minggu 2: Emosi & Konflik (Tindakan vs Kata-kata)",
+            phaseTitle = "Minggu 2: Emosi & Konflik (Hari 8 - 14)",
             title = "Perhatikan Reaksi Terhadap Tekanan Kerja",
             actionItem = "Lihat bagaimana dia mengendalikan harinya yang sangat sibuk atau penuh tekanan di tempat kerja.",
             questionToAsk = "\"Hari awak nampak mencabar hari ini, bagaimana awak selalu kendalikan tekanan kerja?\"",
@@ -99,7 +99,7 @@ object ThirtyDayGuideCatalog {
         DayGuide(
             dayNumber = 9,
             weekPhase = 2,
-            phaseTitle = "Minggu 2: Emosi & Konflik (Tindakan vs Kata-kata)",
+            phaseTitle = "Minggu 2: Emosi & Konflik (Hari 8 - 14)",
             title = "Uji Perbezaan Pandangan Kecil",
             actionItem = "Nyatakan pendapat yang berbeza secara sopan dalam satu topik perbincangan harian.",
             questionToAsk = "\"Saya ada pandangan yang agak berbeza tentang perkara itu. Pada pendapat saya... awak rasa macam mana?\"",
@@ -109,7 +109,7 @@ object ThirtyDayGuideCatalog {
         DayGuide(
             dayNumber = 10,
             weekPhase = 2,
-            phaseTitle = "Minggu 2: Emosi & Konflik (Tindakan vs Kata-kata)",
+            phaseTitle = "Minggu 2: Emosi & Konflik (Hari 8 - 14)",
             title = "Perhatikan Layanan Terhadap Orang Lain",
             actionItem = "Perhatikan cara dia bercakap dengan pelayan kedai, pemandu lain, atau pembantu penghantar barang.",
             questionToAsk = "(Pemerhatian senyap semasa makan atau keluar bersama mahram)",
@@ -119,7 +119,7 @@ object ThirtyDayGuideCatalog {
         DayGuide(
             dayNumber = 11,
             weekPhase = 2,
-            phaseTitle = "Minggu 2: Emosi & Konflik (Tindakan vs Kata-kata)",
+            phaseTitle = "Minggu 2: Emosi & Konflik (Hari 8 - 14)",
             title = "Uji Ketepatan Janji Temu",
             actionItem = "Tetapkan waktu perbincangan telefon atau pertemuan. Lihat ketepatan masanya.",
             questionToAsk = "\"Kita janji pukul 8.30 malam ya.\"",
@@ -129,7 +129,7 @@ object ThirtyDayGuideCatalog {
         DayGuide(
             dayNumber = 12,
             weekPhase = 2,
-            phaseTitle = "Minggu 2: Emosi & Konflik (Tindakan vs Kata-kata)",
+            phaseTitle = "Minggu 2: Emosi & Konflik (Hari 8 - 14)",
             title = "Tanya Cara Selesai Masalah Lalu",
             actionItem = "Tanya bagaimana dia menyelesaikan perselisihan faham besar dalam keluarga atau tempat kerjanya.",
             questionToAsk = "\"Bila berlaku salah faham besar dengan orang terdekat, adakah awak jenis yang bersemuka atau pendam lama?\"",
@@ -139,7 +139,7 @@ object ThirtyDayGuideCatalog {
         DayGuide(
             dayNumber = 13,
             weekPhase = 2,
-            phaseTitle = "Minggu 2: Emosi & Konflik (Tindakan vs Kata-kata)",
+            phaseTitle = "Minggu 2: Emosi & Konflik (Hari 8 - 14)",
             title = "Uji Sifat Meminta Maaf",
             actionItem = "Bila berlaku sedikit salah faham kecil, perhatikan adakah dia ada sifat rendah diri memohon maaf.",
             questionToAsk = "\"Tadi saya rasa kurang selesa bila awak cakap begitu. Awak rasa apa yang patut kita buat?\"",
@@ -149,7 +149,7 @@ object ThirtyDayGuideCatalog {
         DayGuide(
             dayNumber = 14,
             weekPhase = 2,
-            phaseTitle = "Minggu 2: Emosi & Konflik (Tindakan vs Kata-kata)",
+            phaseTitle = "Minggu 2: Emosi & Konflik (Hari 8 - 14)",
             title = "Semakan Fasa 2: Catat Bukti Tindakan",
             actionItem = "Buka tab 'Jurnal Tindakan' dalam aplikasi dan catat insiden atau konsistensi tindakannya sepanjang minggu ini.",
             questionToAsk = "\"Adakah tindakannya selari dengan kata-katanya setakat ini?\"",
@@ -161,7 +161,7 @@ object ThirtyDayGuideCatalog {
         DayGuide(
             dayNumber = 15,
             weekPhase = 3,
-            phaseTitle = "Minggu 3: Kewangan & Kerjaya (Uji Tanggungjawab)",
+            phaseTitle = "Minggu 3: Kewangan & Tanggungjawab (Hari 15 - 21)",
             title = "Bincang Hala Tuju Kerjaya & Rezeki",
             actionItem = "Bincangkan secara matang mengenai punca rezekinya dan perancangan kestabilan ekonomi keluarga.",
             questionToAsk = "\"Boleh kongsikan apa cabaran terbesar dalam kerjaya awak sekarang dan bagaimana awak rancang masa depan?\"",
@@ -171,7 +171,7 @@ object ThirtyDayGuideCatalog {
         DayGuide(
             dayNumber = 16,
             weekPhase = 3,
-            phaseTitle = "Minggu 3: Kewangan & Kerjaya (Uji Tanggungjawab)",
+            phaseTitle = "Minggu 3: Kewangan & Tanggungjawab (Hari 15 - 21)",
             title = "Sentuh Isu Kewajipan Nafkah Zahir",
             actionItem = "Bincangkan konsep nafkah asas: tempat tinggal, makan minum, pakaian dan kebajikan isteri.",
             questionToAsk = "\"Bagaimana pandangan awak tentang tanggungjawab nafkah seorang suami jika isteri pun turut bekerja?\"",
@@ -181,7 +181,7 @@ object ThirtyDayGuideCatalog {
         DayGuide(
             dayNumber = 17,
             weekPhase = 3,
-            phaseTitle = "Minggu 3: Kewangan & Kerjaya (Uji Tanggungjawab)",
+            phaseTitle = "Minggu 3: Kewangan & Tanggungjawab (Hari 15 - 21)",
             title = "Bincang Tempat Tinggal Pasca Nikah",
             actionItem = "Pastikan ada perbincangan jelas tentang lokasi tempat tinggal: menyewa sendiri atau menumpang keluarga.",
             questionToAsk = "\"Lepas kahwin nanti, di mana awak rancang kita akan tinggal bersama?\"",
@@ -191,7 +191,7 @@ object ThirtyDayGuideCatalog {
         DayGuide(
             dayNumber = 18,
             weekPhase = 3,
-            phaseTitle = "Minggu 3: Kewangan & Kerjaya (Uji Tanggungjawab)",
+            phaseTitle = "Minggu 3: Kewangan & Tanggungjawab (Hari 15 - 21)",
             title = "Semak Ketelusan Komitmen Hutang",
             actionItem = "Tanya secara berlapang dada mengenai tanggungan pinjaman yang ada agar tidak terkejut selepas nikah.",
             questionToAsk = "\"Adakah awak ada apa-apa komitmen ansuran atau pinjaman peribadi yang sedang diuruskan sekarang?\"",
@@ -201,17 +201,17 @@ object ThirtyDayGuideCatalog {
         DayGuide(
             dayNumber = 19,
             weekPhase = 3,
-            phaseTitle = "Minggu 3: Kewangan & Kerjaya (Uji Tanggungjawab)",
+            phaseTitle = "Minggu 3: Kewangan & Tanggungjawab (Hari 15 - 21)",
             title = "Perhatikan Tabiat Berbelanja",
             actionItem = "Perhatikan adakah dia berhemah mengurus duit atau boros berbelanja untuk hobi mahal tanpa simpanan.",
             questionToAsk = "\"Apa keutamaan perbelanjaan awak setiap bulan selain daripada komitmen asas?\"",
-            redFlagWarning = "Gemar berjudi dalam talian, pelaburan kripto skim cepat kaya, atau boros berhutang.",
+            redFlagWarning = "Gemar berjudi dalam talian, pelaburan skim cepat kaya, atau boros berhutang.",
             wiseQuote = "Rezeki sedikit tetapi berkat dan diurus cermat jauh lebih membahagiakan."
         ),
         DayGuide(
             dayNumber = 20,
             weekPhase = 3,
-            phaseTitle = "Minggu 3: Kewangan & Kerjaya (Uji Tanggungjawab)",
+            phaseTitle = "Minggu 3: Kewangan & Tanggungjawab (Hari 15 - 21)",
             title = "Uji Sifat Pemurah vs Kedekut",
             actionItem = "Perhatikan sama ada dia berkira dalam perkara-perkara asas atau menghargai usaha pasangan.",
             questionToAsk = "(Pemerhatian perbelanjaan santai dan kesediaan berkongsi)",
@@ -221,7 +221,7 @@ object ThirtyDayGuideCatalog {
         DayGuide(
             dayNumber = 21,
             weekPhase = 3,
-            phaseTitle = "Minggu 3: Kewangan & Kerjaya (Uji Tanggungjawab)",
+            phaseTitle = "Minggu 3: Kewangan & Tanggungjawab (Hari 15 - 21)",
             title = "Kemas Kini Skor Kerjaya & Kewangan",
             actionItem = "Buka Checklist dalam aplikasi dan masukkan markah untuk seksyen Kerjaya & Kewangan.",
             questionToAsk = "\"Adakah dia lelaki yang mampu menyara dan tidak akan memeras keringat anda kelak?\"",
@@ -229,11 +229,11 @@ object ThirtyDayGuideCatalog {
             wiseQuote = "Pilih lelaki yang mencari rezeki dengan keringatnya sendiri, bukan yang mencari kesenangan di atas kudrat isteri."
         ),
 
-        // ============= MINGGU 4: KELUARGA, ANAK & KEPUTUSAN (HARI 22 - 30) =============
+        // ============= MINGGU 4: KELUARGA, ANAK & WALI (HARI 22 - 28) =============
         DayGuide(
             dayNumber = 22,
             weekPhase = 4,
-            phaseTitle = "Minggu 4: Keluarga & Keputusan (Kenal, Nilai, Pilih)",
+            phaseTitle = "Minggu 4: Keluarga, Anak & Wali (Hari 22 - 28)",
             title = "Bincang Isu Anak (Paling Utama Bagi Ibu Tunggal)",
             actionItem = "Bincang secara mendalam penerimaan terhadap anak anda, disiplin anak dan nafkah anak.",
             questionToAsk = "\"Bagaimana pandangan awak tentang anak-anak saya? Apa peranan yang awak selesa ambil dalam hidup mereka?\"",
@@ -243,7 +243,7 @@ object ThirtyDayGuideCatalog {
         DayGuide(
             dayNumber = 23,
             weekPhase = 4,
-            phaseTitle = "Minggu 4: Keluarga & Keputusan (Kenal, Nilai, Pilih)",
+            phaseTitle = "Minggu 4: Keluarga, Anak & Wali (Hari 22 - 28)",
             title = "Uji Interaksi Bersama Anak (Suasana Santai)",
             actionItem = "Rancang pertemuan santai di tempat awam (taman rekreasi/makan) bersama anak dan mahram.",
             questionToAsk = "(Perhatikan bahasa tubuh, senyuman dan kesabarannya melayan keletah anak)",
@@ -253,7 +253,7 @@ object ThirtyDayGuideCatalog {
         DayGuide(
             dayNumber = 24,
             weekPhase = 4,
-            phaseTitle = "Minggu 4: Keluarga & Keputusan (Kenal, Nilai, Pilih)",
+            phaseTitle = "Minggu 4: Keluarga, Anak & Wali (Hari 22 - 28)",
             title = "Semak Tanggungjawab Nafkah Anak Kandung (Jika Duda)",
             actionItem = "Jika calon seorang duda, pastikan dia bertanggungjawab memberi nafkah anak-anak kandungnya.",
             questionToAsk = "\"Bagaimana urusan perjumpaan dan nafkah anak kandung awak dengan bekas isteri berjalan sekarang?\"",
@@ -263,7 +263,7 @@ object ThirtyDayGuideCatalog {
         DayGuide(
             dayNumber = 25,
             weekPhase = 4,
-            phaseTitle = "Minggu 4: Keluarga & Keputusan (Kenal, Nilai, Pilih)",
+            phaseTitle = "Minggu 4: Keluarga, Anak & Wali (Hari 22 - 28)",
             title = "Ketahui Penerimaan Bakal Keluarga Mertua",
             actionItem = "Pastikan keluarganya mengetahui latar belakang anda dan tiada tentangan atau penghinaan status.",
             questionToAsk = "\"Bila masa yang sesuai untuk saya kenal atau berjumpa ibu dan keluarga awak?\"",
@@ -273,7 +273,7 @@ object ThirtyDayGuideCatalog {
         DayGuide(
             dayNumber = 26,
             weekPhase = 4,
-            phaseTitle = "Minggu 4: Keluarga & Keputusan (Kenal, Nilai, Pilih)",
+            phaseTitle = "Minggu 4: Keluarga, Anak & Wali (Hari 22 - 28)",
             title = "Uji Kesediaan Berjumpa Wali Anda",
             actionItem = "Ajak dia berjumpa bapa/wali anda secara rasmi untuk memohon izin berkenalan dan melamar.",
             questionToAsk = "\"Ayah/wali saya ingin berkenalan dengan awak. Bila hujung minggu yang awak lapang untuk datang ke rumah?\"",
@@ -283,42 +283,44 @@ object ThirtyDayGuideCatalog {
         DayGuide(
             dayNumber = 27,
             weekPhase = 4,
-            phaseTitle = "Minggu 4: Keluarga & Keputusan (Kenal, Nilai, Pilih)",
-            title = "Lakukan Solat Istikharah & Doa Ketenangan",
-            actionItem = "Lakukan solat istikharah pada waktu malam. Mohon petunjuk Allah agar dilapangkan jalan atau dijauhkan jika ada mudarat.",
-            questionToAsk = "(Doa Istikharah: Mohon ketetapan hati yang tenang)",
-            redFlagWarning = "Abaikan perasaan was-was yang berterusan jika banyak tanda amaran yang ditemui.",
-            wiseQuote = "Istikharah bukan sekadar mimpi tidur, tetapi ketenangan jiwa dan kelancaran urusan yang baik."
+            phaseTitle = "Minggu 4: Keluarga, Anak & Wali (Hari 22 - 28)",
+            title = "Semak Kesediaan Hadiri Bimbingan & Kursus Rumah Tangga",
+            actionItem = "Bincangkan kesediaan calon untuk mendalami ilmu kekeluargaan dan menerima bimbingan kaunselor atau modul perkahwinan.",
+            questionToAsk = "\"Bagaimana pandangan awak jika kita sertai bimbingan rumahtangga atau rujuk kaunselor jika hadapi cabaran besar nanti?\"",
+            redFlagWarning = "Ego melampau, menganggap dirinya sentiasa betul dan enggan mendengar nasihat atau ilmu perkahwinan.",
+            wiseQuote = "Lelaki yang bersedia memimpin adalah lelaki yang tidak malu untuk terus menuntut ilmu."
         ),
         DayGuide(
             dayNumber = 28,
             weekPhase = 4,
-            phaseTitle = "Minggu 4: Keluarga & Keputusan (Kenal, Nilai, Pilih)",
+            phaseTitle = "Minggu 4: Keluarga, Anak & Wali (Hari 22 - 28)",
             title = "Semak Skor Analisis Penuh Aplikasi",
-            actionItem = "Buka skrin Analisis dalam aplikasi. Lihat peratusan skor Sahsiah, Kerjaya, dan Kekeluargaan.",
-            questionToAsk = "\"Berapa jumlah Red Flag yang ada? Adakah ia sesuatu yang membahayakan masa depan anda dan anak-anak?\"",
-            redFlagWarning = "Jika ada lebih daripada 2 Red Flag kritikal dalam Sahsiah/Kewangan, jangan sesekali berkompromi.",
-            wiseQuote = "Pilih dengan akal dan iman, bukan sekadar rayuan perasaan sementara."
+            actionItem = "Buka skrin Analisis dalam aplikasi ini. Teliti peratusan markah Sahsiah, Kerjaya, dan Kekeluargaan secara objektif.",
+            questionToAsk = "\"Berapa jumlah Red Flag yang dikesan? Adakah ada amaran bahaya yang membahayakan masa depan anda dan anak-anak?\"",
+            redFlagWarning = "Jika ada lebih daripada 2 Red Flag kritikal dalam Sahsiah atau Kewangan, jangan sesekali berkompromi.",
+            wiseQuote = "Pilih dengan akal dan iman yang jernih, bukan sekadar rayuan perasaan sementara."
         ),
+
+        // ============= FASA KEPUTUSAN MUKTAMAD (HARI 29 - 30) =============
         DayGuide(
             dayNumber = 29,
-            weekPhase = 4,
-            phaseTitle = "Minggu 4: Keluarga & Keputusan (Kenal, Nilai, Pilih)",
-            title = "Dapatkan Pandangan Orang Dipercayai",
-            actionItem = "Kongsi ringkasan analisis dan pemerhatian dengan ibu bapa, keluarga terdekat atau kaunselor berwibawa.",
-            questionToAsk = "\"Apa pandangan jujur ibu/keluarga selepas melihat perwatakan dan latar belakang dia?\"",
-            redFlagWarning = "Menolak mentah-mentah nasihat wali yang melihat tanda bahaya yang tidak anda sedari.",
-            wiseQuote = "Pandangan orang yang sayangkan kita sering lebih tajam melihat apa yang dibutakan oleh emosi."
+            weekPhase = 5,
+            phaseTitle = "Fasa Keputusan Muktamad (Hari 29 - 30)",
+            title = "Lakukan Solat Istikharah & Musyawarah Wali",
+            actionItem = "Lakukan solat istikharah pada waktu malam. Dapatkan pandangan ikhlas ibu bapa, keluarga dan orang alim yang dipercayai.",
+            questionToAsk = "(Doa Istikharah: Mohon kelapangan hati jika dia membawa kebaikan, atau dipisahkan dengan tenang jika membawa mudarat)",
+            redFlagWarning = "Mengabaikan firasat hati dan nasihat wali yang melihat tanda bahaya yang dibutakan oleh nafsu.",
+            wiseQuote = "Istikharah menenangkan jiwa, manakala musyawarah mengelakkan penyesalan berpanjangan."
         ),
         DayGuide(
             dayNumber = 30,
-            weekPhase = 4,
-            phaseTitle = "Minggu 4: Keluarga & Keputusan (Kenal, Nilai, Pilih)",
-            title = "Keputusan Muktamad: Teruskan atau Lepaskan",
-            actionItem = "Buat keputusan secara sedar dan berani. Jika dia layak (Green Flag), teruskan langkah akad nikah. Jika ada bahaya, undur diri dengan bermaruah.",
-            questionToAsk = "\"Adakah saya yakin bahawa lelaki ini mampu menjadi pelindung, imam dan penenang hati saya?\"",
-            redFlagWarning = "Jangan berkahwin kerana rasa kasihan, terdesak atau takut bersendirian.",
-            wiseQuote = "Kenali. Nilai. Pilih dengan lebih sedar. Hidup anda dan anak-anak amat berharga."
+            weekPhase = 5,
+            phaseTitle = "Fasa Keputusan Muktamad (Hari 29 - 30)",
+            title = "Keputusan Muktamad: Teruskan Akad atau Undur Diri Bermaruah",
+            actionItem = "Buat keputusan secara sedar dan tegas. Jika dia lulus penilaian (Green Flag dominan), teruskan ke jinjang pelamin. Jika banyak Red Flag, undur diri dengan bermaruah.",
+            questionToAsk = "\"Adakah saya yakin bahawa lelaki ini layak menjadi pemimpin, imam dan penenang hidup saya serta anak-anak?\"",
+            redFlagWarning = "Jangan sesekali berkahwin kerana kasihan, tekanan umur, atau takut menjadi buah mulut orang.",
+            wiseQuote = "Kenali. Nilai. Pilih dengan lebih sedar. Hidup, masa depan dan maruah anda amat berharga."
         )
     )
 }
