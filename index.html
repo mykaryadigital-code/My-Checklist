@@ -200,10 +200,66 @@
         <p>Kenal dulu sebelum ambil keputusan besar</p>
       </div>
     </div>
-    <div class="candidate-badge" onclick="alert('Calon Aktif: Hariz (34 tahun, Duda 1 Anak). Anda boleh ubah atau simpan penilaian secara automatik.')">
-      👤 Hariz ▾
+    <div style="display: flex; gap: 8px; align-items: center;">
+      <button onclick="openAddCandidateModal()" style="background: var(--surface-variant); color: var(--primary); border: 1px solid var(--card-border); padding: 6px 10px; border-radius: 12px; font-size: 12px; font-weight: 700; cursor: pointer;">
+        + Tambah Calon
+      </button>
+      <div class="candidate-badge" id="current-candidate-badge" onclick="openCandidateModal()">
+        👤 <span id="candidate-name-display">Hariz</span> ▾
+      </div>
     </div>
   </header>
+
+  <!-- Modal Urus / Tambah Calon -->
+  <div id="candidate-modal" class="hidden" style="position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 16px;">
+    <div style="background: #FFF; width: 100%; max-width: 440px; border-radius: 20px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+        <h3 id="modal-title" style="font-size: 17px; font-weight: 800; color: var(--primary);">Pilih / Tambah Calon</h3>
+        <button onclick="closeCandidateModal()" style="background: none; border: none; font-size: 18px; cursor: pointer;">✕</button>
+      </div>
+
+      <div id="candidate-select-view">
+        <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">Pilih calon yang ingin dinilai:</p>
+        <div id="candidates-radio-list" style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px;"></div>
+        <button class="btn" onclick="showAddForm()" style="background: var(--surface-variant); color: var(--primary); border: 1px dashed var(--primary);">+ Daftar Calon Baru</button>
+      </div>
+
+      <div id="candidate-add-view" class="hidden">
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div>
+            <label style="font-size: 12px; font-weight: 700; color: var(--text);">Nama / Samaran Calon:</label>
+            <input type="text" id="new-cand-name" placeholder="cth: Calon B / Amir" style="width: 100%; padding: 10px; border: 1px solid var(--card-border); border-radius: 8px; font-size: 13px; margin-top: 4px;">
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <div style="flex: 1;">
+              <label style="font-size: 12px; font-weight: 700;">Umur:</label>
+              <input type="number" id="new-cand-age" value="32" style="width: 100%; padding: 10px; border: 1px solid var(--card-border); border-radius: 8px; font-size: 13px; margin-top: 4px;">
+            </div>
+            <div style="flex: 1.5;">
+              <label style="font-size: 12px; font-weight: 700;">Tempoh Kenal:</label>
+              <input type="text" id="new-cand-duration" placeholder="cth: 2 Bulan" style="width: 100%; padding: 10px; border: 1px solid var(--card-border); border-radius: 8px; font-size: 13px; margin-top: 4px;">
+            </div>
+          </div>
+          <div>
+            <label style="font-size: 12px; font-weight: 700;">Pekerjaan / Bidang:</label>
+            <input type="text" id="new-cand-job" placeholder="cth: Jurutera / Peniaga" style="width: 100%; padding: 10px; border: 1px solid var(--card-border); border-radius: 8px; font-size: 13px; margin-top: 4px;">
+          </div>
+          <div>
+            <label style="font-size: 12px; font-weight: 700;">Status Perkahwinan:</label>
+            <select id="new-cand-status" style="width: 100%; padding: 10px; border: 1px solid var(--card-border); border-radius: 8px; font-size: 13px; margin-top: 4px;">
+              <option value="Bujang">Bujang</option>
+              <option value="Duda (Tiada Anak)">Duda (Tiada Anak)</option>
+              <option value="Duda (Ada Anak)">Duda (Ada Anak)</option>
+            </select>
+          </div>
+          <div style="display: flex; gap: 8px; margin-top: 8px;">
+            <button onclick="hideAddForm()" style="flex: 1; padding: 10px; border-radius: 8px; border: 1px solid var(--card-border); background: #FFF; font-weight: 600; cursor: pointer;">Batal</button>
+            <button class="btn" onclick="saveNewCandidate()" style="flex: 1.5; margin-top: 0;">Simpan Calon</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="container">
 
@@ -473,6 +529,92 @@
           </div>
         `;
       });
+    }
+
+    // Candidate Management Logic
+    let candidatesList = [
+      { id: 'cand_1', name: 'Hariz', age: 34, job: 'Pengurus Logistik', status: 'Duda (Ada Anak)', duration: '2 Bulan' }
+    ];
+    let activeCandidateId = 'cand_1';
+
+    function openCandidateModal() {
+      document.getElementById('candidate-modal').classList.remove('hidden');
+      document.getElementById('candidate-select-view').classList.remove('hidden');
+      document.getElementById('candidate-add-view').classList.add('hidden');
+      renderCandidateRadioList();
+    }
+
+    function openAddCandidateModal() {
+      document.getElementById('candidate-modal').classList.remove('hidden');
+      document.getElementById('candidate-select-view').classList.add('hidden');
+      document.getElementById('candidate-add-view').classList.remove('hidden');
+    }
+
+    function closeCandidateModal() {
+      document.getElementById('candidate-modal').classList.add('hidden');
+    }
+
+    function showAddForm() {
+      document.getElementById('candidate-select-view').classList.add('hidden');
+      document.getElementById('candidate-add-view').classList.remove('hidden');
+    }
+
+    function hideAddForm() {
+      document.getElementById('candidate-add-view').classList.add('hidden');
+      document.getElementById('candidate-select-view').classList.remove('hidden');
+    }
+
+    function renderCandidateRadioList() {
+      const container = document.getElementById('candidates-radio-list');
+      container.innerHTML = '';
+      candidatesList.forEach(cand => {
+        const isSel = cand.id === activeCandidateId;
+        const row = document.createElement('div');
+        row.style = `display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; border-radius: 10px; border: 1.5px solid ${isSel ? 'var(--primary)' : 'var(--card-border)'}; background: ${isSel ? 'var(--surface-variant)' : '#FFF'}; cursor: pointer;`;
+        row.onclick = () => selectCandidate(cand.id);
+        row.innerHTML = `
+          <div>
+            <div style="font-weight: 800; font-size: 14px;">${cand.name} ${isSel ? '✓' : ''}</div>
+            <div style="font-size: 11px; color: var(--text-muted);">${cand.age} tahun • ${cand.status} • ${cand.job}</div>
+          </div>
+        `;
+        container.appendChild(row);
+      });
+    }
+
+    function selectCandidate(id) {
+      activeCandidateId = id;
+      const c = candidatesList.find(x => x.id === id);
+      if (c) {
+        document.getElementById('candidate-name-display').innerText = c.name;
+      }
+      closeCandidateModal();
+    }
+
+    function saveNewCandidate() {
+      const name = document.getElementById('new-cand-name').value.trim();
+      const age = document.getElementById('new-cand-age').value || 30;
+      const duration = document.getElementById('new-cand-duration').value.trim() || 'Baru Kenal';
+      const job = document.getElementById('new-cand-job').value.trim() || 'Bekerja';
+      const status = document.getElementById('new-cand-status').value;
+
+      if (!name) {
+        alert('Sila masukkan nama atau nama samaran calon.');
+        return;
+      }
+
+      const newId = 'cand_' + Date.now();
+      const newCand = { id: newId, name, age, job, status, duration };
+      candidatesList.push(newCand);
+      selectCandidate(newId);
+
+      // Reset checklist for new candidate
+      criteriaData.forEach(c => c.rating = 'none');
+      renderCriteria();
+
+      // Clear input
+      document.getElementById('new-cand-name').value = '';
+      alert(`Calon baru "${name}" berjaya didaftarkan! Anda kini boleh mula menilai beliau.`);
     }
 
     renderCriteria();

@@ -20,10 +20,12 @@ import androidx.compose.material.icons.filled.Checklist
 import androidx.compose.material.icons.filled.EditNote
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.PersonAdd
 import androidx.compose.material.icons.filled.QuestionAnswer
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -121,6 +123,18 @@ fun MainAppScaffold(
                     }
                 },
                 actions = {
+                    // Quick Add Candidate Button
+                    IconButton(
+                        onClick = { showAddCandidateDialog = true },
+                        modifier = Modifier.testTag("btn_quick_add_candidate")
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.PersonAdd,
+                            contentDescription = "Tambah Calon Baru",
+                            tint = RosewoodPrimary
+                        )
+                    }
+
                     // Candidate Switcher Pill
                     Surface(
                         shape = RoundedCornerShape(20.dp),
