@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checklist Bakal Suami - Panduan Menilai Pasangan</title>
+  <meta name="description" content="Panduan dan senarai semak teliti untuk wanita menilai calon pasangan berpandukan aspek sahsiah, kerjaya, dan hubungan kekeluargaan.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #C83264;
+      --primary-hover: #AB2652;
+      --primary-light: #FFD8E4;
+      --primary-dark: #400018;
+      --bg: #FFFFFF;
+      --card-bg: #FFFFFF;
+      --card-border: #F5CBD7;
+      --surface-variant: #FDE8EF;
+      --text: #26131A;
+      --text-muted: #7A636C;
+      --green: #1B8755;
+      --green-bg: #D4F4E4;
+      --caution: #D97706;
+      --caution-bg: #FEF3C7;
+      --red: #DC2626;
+      --red-bg: #FEE2E2;
+      --shadow: 0 4px 20px rgba(200, 50, 100, 0.08);
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background-color: var(--bg); color: var(--text); padding-bottom: 90px; }
+
+    header {
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    }
+
+    .brand { display: flex; align-items: center; gap: 8px; }
+    .brand-icon { color: var(--primary); font-size: 20px; }
+    .brand h1 { font-size: 17px; font-weight: 800; color: var(--primary); line-height: 1.2; }
+    .brand p { font-size: 11px; color: var(--text-muted); }
+
+    .candidate-badge {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .container { max-width: 680px; margin: 0 auto; padding: 16px; }
+
+    /* Nav Tabs */
+    .nav-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #FFFFFF;
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      justify-content: space-around;
+      padding: 8px 4px;
+      z-index: 100;
+      box-shadow: 0 -2px 15px rgba(0,0,0,0.05);
+    }
+
+    .nav-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 600;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      padding: 6px 12px;
+      border-radius: 12px;
+      transition: all 0.2s;
+    }
+
+    .nav-btn.active {
+      color: var(--primary);
+      background: var(--surface-variant);
+    }
+    .nav-btn span.icon { font-size: 18px; }
+
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow);
+    }
+
+    .score-banner {
+      background: linear-gradient(135deg, #FFF0F5 0%, #FFFFFF 100%);
+      border: 1.5px solid var(--card-border);
+    }
+
+    .score-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .score-circle {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: var(--primary-light); color: var(--primary);
+      font-size: 18px; font-weight: 800; display: flex; align-items: center; justify-content: center;
+    }
+
+    .progress-bar-bg {
+      height: 8px; background: var(--surface-variant); border-radius: 4px; overflow: hidden; margin: 10px 0;
+    }
+    .progress-fill { height: 100%; background: var(--primary); border-radius: 4px; transition: width 0.3s; }
+
+    .score-stats { display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; margin-top: 8px; }
+
+    /* Filter Chips */
+    .chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 12px; }
+    .chip {
+      background: var(--surface-variant); color: var(--text);
+      padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600;
+      border: 1px solid transparent; cursor: pointer; white-space: nowrap;
+    }
+    .chip.active { background: var(--primary); color: #FFF; }
+
+    /* Criterion Item */
+    .criterion-card { transition: all 0.2s; }
+    .book-ref {
+      display: inline-block; background: var(--primary-light); color: var(--primary-dark);
+      padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; margin-bottom: 6px;
+    }
+    .criterion-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .criterion-sub { font-size: 12px; color: var(--text-muted); line-height: 1.4; margin-bottom: 10px; }
+
+    .question-box {
+      background: #FFF7FA; border-left: 3px solid var(--primary); padding: 10px 12px;
+      border-radius: 0 8px 8px 0; font-size: 13px; line-height: 1.4; margin-bottom: 12px;
+    }
+    .question-box strong { color: var(--primary); font-size: 11px; display: block; margin-bottom: 2px; }
+
+    .rating-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+    .rating-pill {
+      flex: 1; min-width: 90px; padding: 7px 8px; border-radius: 20px; font-size: 11px; font-weight: 700;
+      border: 1px solid var(--card-border); background: #FFF; text-align: center; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 4px;
+    }
+    .rating-pill.green.active { background: var(--green); color: #FFF; border-color: var(--green); }
+    .rating-pill.caution.active { background: var(--caution); color: #FFF; border-color: var(--caution); }
+    .rating-pill.red.active { background: var(--red); color: #FFF; border-color: var(--red); }
+
+    .details-toggle {
+      font-size: 12px; color: var(--primary); font-weight: 700; cursor: pointer;
+      margin-top: 8px; display: inline-block;
+    }
+    .details-box {
+      margin-top: 10px; font-size: 12px; line-height: 1.5; padding: 10px;
+      border-radius: 8px; background: #FFF9FB; border: 1px dashed var(--card-border);
+    }
+    .details-box .tip { color: #15803D; margin-bottom: 6px; }
+    .details-box .green-pts { color: #166534; margin-bottom: 6px; }
+    .details-box .red-pts { color: #991B1B; }
+
+    /* Button */
+    .btn {
+      width: 100%; padding: 12px; border-radius: 12px; background: var(--primary); color: #FFF;
+      font-size: 14px; font-weight: 700; border: none; cursor: pointer; display: flex;
+      align-items: center; justify-content: center; gap: 8px; margin-top: 10px;
+    }
+    .btn:hover { background: var(--primary-hover); }
+
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      <div class="brand-icon">♥</div>
+      <div>
+        <h1>Checklist Bakal Suami</h1>
+        <p>Kenal dulu sebelum ambil keputusan besar</p>
+      </div>
+    </div>
+    <div class="candidate-badge" onclick="alert('Calon Aktif: Hariz (34 tahun, Duda 1 Anak). Anda boleh ubah atau simpan penilaian secara automatik.')">
+      👤 Hariz ▾
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- TAB 1: CHECKLIST -->
+    <div id="tab-checklist" class="tab-content">
+      <!-- Score Banner -->
+      <div class="card score-banner">
+        <div class="score-header">
+          <div>
+            <h3 style="font-size: 15px; font-weight: 800;">Skor Keserasian Calon</h3>
+            <p id="eval-summary" style="font-size: 12px; color: var(--text-muted);">Sedang menilai 15 kriteria</p>
+          </div>
+          <div class="score-circle" id="overall-score">78%</div>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-fill" id="score-bar" style="width: 78%;"></div>
+        </div>
+        <div class="score-stats">
+          <span style="color: var(--green);">🟢 Green: <b id="cnt-green">5</b></span>
+          <span style="color: var(--caution);">🟡 Ragu: <b id="cnt-caution">1</b></span>
+          <span style="color: var(--red);">🔴 Red Flag: <b id="cnt-red">0</b></span>
+        </div>
+      </div>
+
+      <!-- Category Filter Chips -->
+      <div class="chips">
+        <div class="chip active" onclick="filterAspect('all', this)">Semua (15)</div>
+        <div class="chip" onclick="filterAspect('sahsiah', this)">Sahsiah & Emosi</div>
+        <div class="chip" onclick="filterAspect('kerjaya', this)">Kerjaya & Kewangan</div>
+        <div class="chip" onclick="filterAspect('keluarga', this)">Keluarga & Anak</div>
+        <div class="chip" onclick="filterAspect('langkah', this)">Langkah Nikah</div>
+      </div>
+
+      <!-- Criteria Cards Container -->
+      <div id="criteria-list"></div>
+    </div>
+
+    <!-- TAB 2: 30 HARI -->
+    <div id="tab-thirty" class="tab-content hidden">
+      <div class="card" style="background: var(--surface-variant);">
+        <h3 style="font-size: 16px; font-weight: 800; color: var(--primary);">Panduan 30 Hari Kenal Calon</h3>
+        <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Sistem 30 hari untuk mengenali lelaki melalui tindakan, bukan sekadar kata-kata manis.</p>
+      </div>
+      <div id="thirty-days-list"></div>
+    </div>
+
+    <!-- TAB 3: ANALISIS -->
+    <div id="tab-analysis" class="tab-content hidden">
+      <div class="card" style="border: 2px solid var(--primary);">
+        <div style="font-size: 12px; font-weight: 800; color: var(--text-muted);">KEPUTUSAN PENILAIAN</div>
+        <h2 style="font-size: 20px; font-weight: 800; color: var(--primary); margin: 4px 0 10px 0;">Hariz (34 Tahun)</h2>
+        <div style="padding: 10px; background: #D4F4E4; border-radius: 8px; color: #166534; font-weight: 700; font-size: 14px; margin-bottom: 10px;">
+          ✓ Sangat Berpotensi (Green Flag)
+        </div>
+        <p style="font-size: 13px; line-height: 1.5; color: var(--text);">
+          Calon menunjukkan tahap kematangan emosi, kestabilan pendapatan dan kesediaan memikul tanggungjawab nafkah serta menyayangi anak pasangan. Teruskan ke fasa pertemuan wali dan istikharah.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3 style="font-size: 15px; font-weight: 800; margin-bottom: 12px; color: var(--primary);">Skor Mengikut Aspek</h3>
+        <div style="margin-bottom: 10px;">
+          <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 700;">
+            <span>Sahsiah & Emosi</span><span>85%</span>
+          </div>
+          <div class="progress-bar-bg"><div class="progress-fill" style="width: 85%;"></div></div>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 700;">
+            <span>Kerjaya & Kewangan</span><span>75%</span>
+          </div>
+          <div class="progress-bar-bg"><div class="progress-fill" style="width: 75%;"></div></div>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 700;">
+            <span>Kekeluargaan & Anak</span><span>80%</span>
+          </div>
+          <div class="progress-bar-bg"><div class="progress-fill" style="width: 80%;"></div></div>
+        </div>
+      </div>
+
+      <button class="btn" onclick="copyReport()">📋 Salin Ringkasan Penilaian</button>
+    </div>
+
+    <!-- TAB 4: JURNAL -->
+    <div id="tab-journal" class="tab-content hidden">
+      <div class="card" style="background: var(--surface-variant);">
+        <h3 style="font-size: 15px; font-weight: 800; color: var(--primary);">Jurnal Tindakan vs Kata-kata</h3>
+        <p style="font-size: 12px; color: var(--text-muted);">Rekod peristiwa nyata untuk menguji sama ada perbuatannya selari dengan apa yang dijanjikan.</p>
+      </div>
+      <div class="card">
+        <div style="font-size: 11px; color: var(--text-muted);">15 Okt 2026</div>
+        <h4 style="font-size: 14px; font-weight: 700; margin: 4px 0;">Pertemuan santai di taman rekreasi</h4>
+        <p style="font-size: 12px; margin: 4px 0;">💬 <b>Kata-kata:</b> "Anak awak adalah amanah yang saya akan jaga macam anak saya sendiri."</p>
+        <p style="font-size: 12px; margin: 4px 0;">👀 <b>Tindakan:</b> Membawa hadiah mainan kecil, sabar melayan bila anak tumpahkan aiskrim tanpa marah.</p>
+        <span style="display: inline-block; background: var(--green-bg); color: var(--green); padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; margin-top: 6px;">
+          ✓ Konsisten (Green Flag)
+        </span>
+      </div>
+    </div>
+
+    <!-- TAB 5: SOALAN -->
+    <div id="tab-questions" class="tab-content hidden">
+      <div class="card" style="background: var(--surface-variant);">
+        <h3 style="font-size: 15px; font-weight: 800; color: var(--primary);">Bank Ayat & Soalan Penting</h3>
+        <p style="font-size: 12px; color: var(--text-muted);">Koleksi soalan bernas untuk ditanya semasa sesi ta'aruf.</p>
+      </div>
+      <div id="questions-list"></div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Navigation -->
+  <nav class="nav-bar">
+    <button class="nav-btn active" onclick="switchTab('checklist', this)">
+      <span class="icon">☑</span><span>Checklist</span>
+    </button>
+    <button class="nav-btn" onclick="switchTab('thirty', this)">
+      <span class="icon">📅</span><span>30 Hari</span>
+    </button>
+    <button class="nav-btn" onclick="switchTab('analysis', this)">
+      <span class="icon">📊</span><span>Analisis</span>
+    </button>
+    <button class="nav-btn" onclick="switchTab('journal', this)">
+      <span class="icon">✍</span><span>Jurnal</span>
+    </button>
+    <button class="nav-btn" onclick="switchTab('questions', this)">
+      <span class="icon">💬</span><span>Soalan</span>
+    </button>
+  </nav>
+
+  <script>
+    const criteriaData = [
+      { id: 'c1', aspect: 'sahsiah', ref: 'Perkara 1: Niat', title: 'Niat Sebenar Perkahwinan', sub: 'Adakah dia berkahwin atas dasar tanggungjawab atau sekadar mencari peneman/pembantu?', q: '"Kenapa awak nak berkahwin semula sekarang, dan apa yang awak cari dalam seorang isteri?"', tip: 'Perhatikan jika jawapannya fokus kepada perkongsian hidup sakinah atau sekadar nak orang jaga makan pakai.', rating: 'green' },
+      { id: 'c2', aspect: 'sahsiah', ref: 'Perkara 5: Konflik', title: 'Pengurusan Emosi & Konflik', sub: 'Bagaimana tindak balasnya apabila marah, ditegur, atau berbeza pandangan?', q: '"Bila awak tengah sangat marah atau rasa tertekan, apa perkara pertama yang awak selalu buat?"', tip: 'Uji dengan sedikit perbezaan pendapat; lihat adakah dia menengking atau berbincang matang.', rating: 'green' },
+      { id: 'c3', aspect: 'sahsiah', ref: 'Perkara 2: Masa Lalu', title: 'Ketelusan Masa Lalu', sub: 'Adakah dia jujur tentang sejarah hidup, bekas perkahwinan dan kesilapan lalu?', q: '"Apa pengajaran terbesar yang awak dapat daripada hubungan awak sebelum ini?"', tip: 'Adakah dia menyalahkan bekas isteri 100% atau matang mengakui kelemahan sendiri.', rating: 'green' },
+      { id: 'c4', aspect: 'kerjaya', ref: 'Perkara 3: Kewangan', title: 'Kestabilan Punca Pendapatan', sub: 'Mempunyai kerjaya atau perniagaan sah dan mencukupi untuk sara hidup.', q: '"Boleh kongsikan bidang kerjaya awak dan perancangan 3 tahun akan datang?"', tip: 'Pastikan punca pendapatannya jelas dan halal, bukan skim meragukan.', rating: 'green' },
+      { id: 'c5', aspect: 'kerjaya', ref: 'Perkara 3: Hak Isteri', title: 'Kefahaman Kewajipan Nafkah Zahir', sub: 'Faham bahawa nafkah asas makan, pakai, kediaman adalah tanggungjawab suami.', q: '"Bagaimana perancangan awak tentang nafkah rumah tangga jika isteri turut bekerja?"', tip: 'Lelaki bertanggungjawab tidak memaksa isteri kongsi 50-50 secara paksa.', rating: 'green' },
+      { id: 'c6', aspect: 'kerjaya', ref: 'Perkara 3: Liabiliti', title: 'Ketelusan Hutang & Liabiliti', sub: 'Adakah dia telus tentang tanggungan pinjaman dan bebas daripada hutang haram?', q: '"Adakah awak ada apa-apa pinjaman berat atau ansuran yang perlu diuruskan?"', tip: 'Ketahui komitmen bulanan agar tidak terbeban selepas nikah.', rating: 'caution' },
+      { id: 'c7', aspect: 'keluarga', ref: 'Perkara 4: Anak', title: 'Penerimaan Anak Pasangan', sub: 'Ikhlas menerima anak-anak pasangan tanpa diskriminasi.', q: '"Bagaimana perasaan dan kesediaan awak untuk menerima anak saya sebahagian daripada hidup awak?"', tip: 'Bawa bertemu anak dalam suasana santai dan perhatikan kesabarannya.', rating: 'green' },
+      { id: 'c8', aspect: 'keluarga', ref: 'Perkara 6: Keluarga', title: 'Layanan Terhadap Ibu Bapa', sub: 'Menghormati ibu bapa sendiri tanpa bersikap zalim terhadap bakal isteri.', q: '"Bagaimana hubungan awak dengan mak ayah dan adik-beradik awak sekarang?"', tip: 'Cara dia melayan ibu dan adik perempuan cerminan layanannya kepada isteri.', rating: 'none' },
+      { id: 'c9', aspect: 'langkah', ref: 'Perkara 7: Langkah Seterusnya', title: 'Kesediaan Berjumpa Wali', sub: 'Berani bersemuka dengan wali secara beradab dan mohon persetujuan.', q: '"Bila awak bersedia untuk berjumpa wali dan keluarga saya secara rasmi?"', tip: 'Lelaki serius tidak berdolak-dalih berbulan-bulan bila diajak jumpa bapa.', rating: 'none' }
+    ];
+
+    function renderCriteria() {
+      const container = document.getElementById('criteria-list');
+      container.innerHTML = '';
+      criteriaData.forEach(c => {
+        const card = document.createElement('div');
+        card.className = `card criterion-card aspect-${c.aspect}`;
+        card.innerHTML = `
+          <div class="book-ref">${c.ref}</div>
+          <div class="criterion-title">${c.title}</div>
+          <div class="criterion-sub">${c.sub}</div>
+          <div class="question-box">
+            <strong>💬 AYAT & SOALAN PENTING:</strong>
+            ${c.q}
+          </div>
+          <div class="rating-row">
+            <div class="rating-pill green ${c.rating === 'green' ? 'active' : ''}" onclick="setRating('${c.id}', 'green')">🟢 Green Flag</div>
+            <div class="rating-pill caution ${c.rating === 'caution' ? 'active' : ''}" onclick="setRating('${c.id}', 'caution')">🟡 Ragu/Pantau</div>
+            <div class="rating-pill red ${c.rating === 'red' ? 'active' : ''}" onclick="setRating('${c.id}', 'red')">🔴 Red Flag</div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+      updateScore();
+    }
+
+    function setRating(id, rating) {
+      const item = criteriaData.find(x => x.id === id);
+      if (item) {
+        item.rating = item.rating === rating ? 'none' : rating;
+        renderCriteria();
+      }
+    }
+
+    function updateScore() {
+      const rated = criteriaData.filter(x => x.rating !== 'none');
+      const green = criteriaData.filter(x => x.rating === 'green').length;
+      const caution = criteriaData.filter(x => x.rating === 'caution').length;
+      const red = criteriaData.filter(x => x.rating === 'red').length;
+
+      document.getElementById('cnt-green').innerText = green;
+      document.getElementById('cnt-caution').innerText = caution;
+      document.getElementById('cnt-red').innerText = red;
+
+      let pct = 0;
+      if (rated.length > 0) {
+        let pts = (green * 3) + (caution * 1) - (red * 2);
+        pct = Math.max(0, Math.min(100, Math.round((pts / (rated.length * 3)) * 100)));
+      }
+      document.getElementById('overall-score').innerText = pct + '%';
+      document.getElementById('score-bar').style.width = pct + '%';
+      document.getElementById('eval-summary').innerText = `${rated.length} daripada ${criteriaData.length} kriteria telah dinilai`;
+    }
+
+    function filterAspect(aspect, btn) {
+      document.querySelectorAll('.chips .chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.criterion-card').forEach(card => {
+        if (aspect === 'all' || card.classList.contains('aspect-' + aspect)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function switchTab(tabId, btn) {
+      document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + tabId).classList.remove('hidden');
+      btn.classList.add('active');
+      window.scrollTo(0, 0);
+    }
+
+    function copyReport() {
+      const text = `📋 LAPORAN PENILAIAN BAKAL SUAMI\nCalon: Hariz (34 Tahun, Duda 1 Anak)\nSkor Keserasian: 78%\nStatus: Sangat Berpotensi (Green Flag)\nPemerhatian: Niat ikhlas, kestabilan nafkah terbukti, dan mesra terhadap anak pasangan.\nPanduan: Kenal dulu sebelum ambil keputusan besar.`;
+      navigator.clipboard.writeText(text);
+      alert('Laporan ringkasan berjaya disalin!');
+    }
+
+    // Render 30 Days
+    const thirtyDays = [
+      { d: 1, t: 'Tetapkan Sempadan & Niat Ta\'aruf', act: 'Tegaskan perkenalan ini bermatlamat perkahwinan, bukan buang masa.', q: '"Apa matlamat perkenalan awak kali ini?"' },
+      { d: 2, t: 'Semak Ketelusan Status Perkahwinan', act: 'Minta pengesahan status: bujang atau surat cerai sah jika duda.', q: '"Boleh kongsikan status perkahwinan dan dokumen mahkamah?"' },
+      { d: 8, t: 'Perhatikan Reaksi Tekanan Kerja', act: 'Lihat bagaimana dia kendalikan hari yang penuh tekanan.', q: '"Hari awak nampak mencabar, macam mana awak kawal stres?"' },
+      { d: 15, t: 'Bincang Kewajipan Nafkah Zahir', act: 'Bincang konsep nafkah asas tempat tinggal, makan dan pakai.', q: '"Bagaimana perancangan nafkah rumah tangga nanti?"' },
+      { d: 22, t: 'Bincang Penerimaan Terhadap Anak', act: 'Paling utama bagi ibu tunggal: pastikan dia ikhlas menerima anak.', q: '"Bagaimana kesediaan awak menerima anak saya?"' },
+      { d: 30, t: 'Keputusan Muktamad (Istikharah & Akal)', act: 'Pilih dengan lebih sedar berdasarkan tindakan yang konsisten.', q: '"Adakah tindakannya membuktikan dia layak menjadi pelindung?"' }
+    ];
+
+    function renderThirty() {
+      const el = document.getElementById('thirty-days-list');
+      thirtyDays.forEach(item => {
+        el.innerHTML += `
+          <div class="card" style="margin-bottom: 10px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="background: var(--primary); color: #FFF; padding: 2px 8px; border-radius: 6px; font-size: 11px; font-weight: 800;">HARI ${item.d}</span>
+              <input type="checkbox" style="width: 18px; height: 18px; accent-color: var(--primary);">
+            </div>
+            <h4 style="font-size: 14px; font-weight: 700; margin: 6px 0 4px 0;">${item.t}</h4>
+            <p style="font-size: 12px; color: var(--text);">📌 <b>Tindakan:</b> ${item.act}</p>
+            <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">💬 <i>${item.q}</i></p>
+          </div>
+        `;
+      });
+    }
+
+    // Render Questions
+    const questionsData = [
+      { cat: 'Niat & Matlamat', q: '"Kenapa awak nak berkahwin semula sekarang, dan apa sebenarnya yang awak cari dalam diri seorang isteri?"', note: 'Menapis lelaki yang sekadar mencari orang gaji percuma atau peneman sunyi sementara.' },
+      { cat: 'Kewangan & Nafkah', q: '"Bagaimana perancangan awak tentang nafkah rumah tangga jika isteri turut bekerja?"', note: 'Menguji kefahaman hak nafkah zahir dan mengelak eksploitasi kewangan.' },
+      { cat: 'Emosi & Konflik', q: '"Bila awak tengah sangat marah, apa yang awak perlukan daripada orang sekeliling?"', note: 'Melihat cara calon mengendalikan rasa tidak puas hati tanpa keganasan.' },
+      { cat: 'Anak & Keluarga', q: '"Bagaimana perasaan dan kesediaan awak untuk menerima anak saya sebahagian hidup awak?"', note: 'Kritikal bagi janda/ibu tunggal demi keselamatan dan emosi anak.' }
+    ];
+
+    function renderQuestions() {
+      const el = document.getElementById('questions-list');
+      questionsData.forEach(item => {
+        el.innerHTML += `
+          <div class="card" style="margin-bottom: 10px;">
+            <span style="background: var(--surface-variant); color: var(--primary); padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 700;">${item.cat}</span>
+            <p style="font-size: 14px; font-weight: 700; color: var(--primary); margin: 8px 0 4px 0;">${item.q}</p>
+            <p style="font-size: 12px; color: var(--text-muted);">Tujuan: ${item.note}</p>
+          </div>
+        `;
+      });
+    }
+
+    renderCriteria();
+    renderThirty();
+    renderQuestions();
+  </script>
+</body>
+</html>
