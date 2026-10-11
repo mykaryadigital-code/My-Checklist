@@ -1,0 +1,6 @@
+{
+  "name": "Checklist Bakal Suami",
+  "description": "Panduan dan senarai semak teliti untuk menilai calon pasangan berpandukan aspek sahsiah, kerjaya, dan hubungan kekeluargaan.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
