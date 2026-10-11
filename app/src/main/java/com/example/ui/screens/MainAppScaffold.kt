@@ -123,18 +123,6 @@ fun MainAppScaffold(
                     }
                 },
                 actions = {
-                    // Quick Add Candidate Button
-                    IconButton(
-                        onClick = { showAddCandidateDialog = true },
-                        modifier = Modifier.testTag("btn_quick_add_candidate")
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.PersonAdd,
-                            contentDescription = "Tambah Calon Baru",
-                            tint = RosewoodPrimary
-                        )
-                    }
-
                     // Candidate Switcher Pill
                     Surface(
                         shape = RoundedCornerShape(20.dp),

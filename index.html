@@ -31,7 +31,7 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
-    body { background-color: var(--bg); color: var(--text); padding-bottom: 90px; }
+    body { background-color: var(--bg); color: var(--text); padding-bottom: 120px; }
 
     header {
       background: #FFFFFF;
@@ -54,7 +54,7 @@
     .candidate-badge {
       background: var(--primary-light);
       color: var(--primary-dark);
-      padding: 6px 12px;
+      padding: 6px 14px;
       border-radius: 20px;
       font-size: 12px;
       font-weight: 700;
@@ -62,11 +62,14 @@
       align-items: center;
       gap: 6px;
       cursor: pointer;
+      border: 1px solid var(--card-border);
+      transition: all 0.2s;
     }
+    .candidate-badge:hover { background: #FFC9D9; }
 
-    .container { max-width: 680px; margin: 0 auto; padding: 16px; }
+    .container { max-width: 680px; margin: 0 auto; padding: 16px 16px 36px 16px; }
 
-    /* Nav Tabs */
+    /* Nav Tabs with Monochrome Lucide SVG Icons */
     .nav-bar {
       position: fixed;
       bottom: 0;
@@ -76,32 +79,42 @@
       border-top: 1px solid var(--card-border);
       display: flex;
       justify-content: space-around;
-      padding: 8px 4px;
+      padding: 8px 6px;
       z-index: 100;
-      box-shadow: 0 -2px 15px rgba(0,0,0,0.05);
+      box-shadow: 0 -3px 20px rgba(0,0,0,0.06);
     }
 
     .nav-btn {
       background: none;
       border: none;
-      color: var(--text-muted);
+      color: #8E7A82;
       font-size: 11px;
       font-weight: 600;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
+      gap: 5px;
       cursor: pointer;
-      padding: 6px 12px;
+      padding: 6px 14px;
       border-radius: 12px;
       transition: all 0.2s;
+    }
+
+    .nav-btn svg {
+      stroke: #8E7A82;
+      transition: stroke 0.2s, transform 0.2s;
     }
 
     .nav-btn.active {
       color: var(--primary);
       background: var(--surface-variant);
+      font-weight: 800;
     }
-    .nav-btn span.icon { font-size: 18px; }
+
+    .nav-btn.active svg {
+      stroke: var(--primary);
+      transform: scale(1.06);
+    }
 
     /* Cards */
     .card {
@@ -200,13 +213,8 @@
         <p>Kenal dulu sebelum ambil keputusan besar</p>
       </div>
     </div>
-    <div style="display: flex; gap: 8px; align-items: center;">
-      <button onclick="openAddCandidateModal()" style="background: var(--surface-variant); color: var(--primary); border: 1px solid var(--card-border); padding: 6px 10px; border-radius: 12px; font-size: 12px; font-weight: 700; cursor: pointer;">
-        + Tambah Calon
-      </button>
-      <div class="candidate-badge" id="current-candidate-badge" onclick="openCandidateModal()">
-        👤 <span id="candidate-name-display">Hariz</span> ▾
-      </div>
+    <div class="candidate-badge" id="current-candidate-badge" onclick="openCandidateModal()">
+      👤 <span id="candidate-name-display">Hariz</span> ▾
     </div>
   </header>
 
@@ -300,11 +308,11 @@
 
       <!-- Category Filter Chips -->
       <div class="chips">
-        <div class="chip active" onclick="filterAspect('all', this)">Semua (15)</div>
-        <div class="chip" onclick="filterAspect('sahsiah', this)">Sahsiah & Emosi</div>
-        <div class="chip" onclick="filterAspect('kerjaya', this)">Kerjaya & Kewangan</div>
-        <div class="chip" onclick="filterAspect('keluarga', this)">Keluarga & Anak</div>
-        <div class="chip" onclick="filterAspect('langkah', this)">Langkah Nikah</div>
+        <div class="chip active" onclick="filterAspect('all', this)">Semua (<span id="count-all">15</span>)</div>
+        <div class="chip" onclick="filterAspect('sahsiah', this)">Sahsiah & Emosi (<span id="count-sahsiah">5</span>)</div>
+        <div class="chip" onclick="filterAspect('kerjaya', this)">Kerjaya & Kewangan (<span id="count-kerjaya">4</span>)</div>
+        <div class="chip" onclick="filterAspect('keluarga', this)">Keluarga & Anak (<span id="count-keluarga">4</span>)</div>
+        <div class="chip" onclick="filterAspect('langkah', this)">Langkah Nikah (<span id="count-langkah">2</span>)</div>
       </div>
 
       <!-- Criteria Cards Container -->
@@ -386,36 +394,74 @@
 
   </div>
 
-  <!-- Bottom Navigation -->
+  <!-- Bottom Navigation with Monochrome Lucide SVG Icons -->
   <nav class="nav-bar">
     <button class="nav-btn active" onclick="switchTab('checklist', this)">
-      <span class="icon">☑</span><span>Checklist</span>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m9 11 3 3L22 4"/>
+        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+      </svg>
+      <span>Checklist</span>
     </button>
     <button class="nav-btn" onclick="switchTab('thirty', this)">
-      <span class="icon">📅</span><span>30 Hari</span>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect width="18" height="18" x="3" y="4" rx="2" ry="2"/>
+        <line x1="16" x2="16" y1="2" y2="6"/>
+        <line x1="8" x2="8" y1="2" y2="6"/>
+        <line x1="3" x2="21" y1="10" y2="10"/>
+        <path d="m9 16 2 2 4-4"/>
+      </svg>
+      <span>30 Hari</span>
     </button>
     <button class="nav-btn" onclick="switchTab('analysis', this)">
-      <span class="icon">📊</span><span>Analisis</span>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" x2="18" y1="20" y2="10"/>
+        <line x1="12" x2="12" y1="20" y2="4"/>
+        <line x1="6" x2="6" y1="20" y2="14"/>
+      </svg>
+      <span>Analisis</span>
     </button>
     <button class="nav-btn" onclick="switchTab('journal', this)">
-      <span class="icon">✍</span><span>Jurnal</span>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 20h9"/>
+        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+      </svg>
+      <span>Jurnal</span>
     </button>
     <button class="nav-btn" onclick="switchTab('questions', this)">
-      <span class="icon">💬</span><span>Soalan</span>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>
+        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+        <line x1="12" x2="12.01" y1="17" y2="17"/>
+      </svg>
+      <span>Soalan</span>
     </button>
   </nav>
 
   <script>
     const criteriaData = [
+      // Sahsiah & Emosi (5)
       { id: 'c1', aspect: 'sahsiah', ref: 'Perkara 1: Niat', title: 'Niat Sebenar Perkahwinan', sub: 'Adakah dia berkahwin atas dasar tanggungjawab atau sekadar mencari peneman/pembantu?', q: '"Kenapa awak nak berkahwin semula sekarang, dan apa yang awak cari dalam seorang isteri?"', tip: 'Perhatikan jika jawapannya fokus kepada perkongsian hidup sakinah atau sekadar nak orang jaga makan pakai.', rating: 'green' },
       { id: 'c2', aspect: 'sahsiah', ref: 'Perkara 5: Konflik', title: 'Pengurusan Emosi & Konflik', sub: 'Bagaimana tindak balasnya apabila marah, ditegur, atau berbeza pandangan?', q: '"Bila awak tengah sangat marah atau rasa tertekan, apa perkara pertama yang awak selalu buat?"', tip: 'Uji dengan sedikit perbezaan pendapat; lihat adakah dia menengking atau berbincang matang.', rating: 'green' },
       { id: 'c3', aspect: 'sahsiah', ref: 'Perkara 2: Masa Lalu', title: 'Ketelusan Masa Lalu', sub: 'Adakah dia jujur tentang sejarah hidup, bekas perkahwinan dan kesilapan lalu?', q: '"Apa pengajaran terbesar yang awak dapat daripada hubungan awak sebelum ini?"', tip: 'Adakah dia menyalahkan bekas isteri 100% atau matang mengakui kelemahan sendiri.', rating: 'green' },
-      { id: 'c4', aspect: 'kerjaya', ref: 'Perkara 3: Kewangan', title: 'Kestabilan Punca Pendapatan', sub: 'Mempunyai kerjaya atau perniagaan sah dan mencukupi untuk sara hidup.', q: '"Boleh kongsikan bidang kerjaya awak dan perancangan 3 tahun akan datang?"', tip: 'Pastikan punca pendapatannya jelas dan halal, bukan skim meragukan.', rating: 'green' },
-      { id: 'c5', aspect: 'kerjaya', ref: 'Perkara 3: Hak Isteri', title: 'Kefahaman Kewajipan Nafkah Zahir', sub: 'Faham bahawa nafkah asas makan, pakai, kediaman adalah tanggungjawab suami.', q: '"Bagaimana perancangan awak tentang nafkah rumah tangga jika isteri turut bekerja?"', tip: 'Lelaki bertanggungjawab tidak memaksa isteri kongsi 50-50 secara paksa.', rating: 'green' },
-      { id: 'c6', aspect: 'kerjaya', ref: 'Perkara 3: Liabiliti', title: 'Ketelusan Hutang & Liabiliti', sub: 'Adakah dia telus tentang tanggungan pinjaman dan bebas daripada hutang haram?', q: '"Adakah awak ada apa-apa pinjaman berat atau ansuran yang perlu diuruskan?"', tip: 'Ketahui komitmen bulanan agar tidak terbeban selepas nikah.', rating: 'caution' },
-      { id: 'c7', aspect: 'keluarga', ref: 'Perkara 4: Anak', title: 'Penerimaan Anak Pasangan', sub: 'Ikhlas menerima anak-anak pasangan tanpa diskriminasi.', q: '"Bagaimana perasaan dan kesediaan awak untuk menerima anak saya sebahagian daripada hidup awak?"', tip: 'Bawa bertemu anak dalam suasana santai dan perhatikan kesabarannya.', rating: 'green' },
-      { id: 'c8', aspect: 'keluarga', ref: 'Perkara 6: Keluarga', title: 'Layanan Terhadap Ibu Bapa', sub: 'Menghormati ibu bapa sendiri tanpa bersikap zalim terhadap bakal isteri.', q: '"Bagaimana hubungan awak dengan mak ayah dan adik-beradik awak sekarang?"', tip: 'Cara dia melayan ibu dan adik perempuan cerminan layanannya kepada isteri.', rating: 'none' },
-      { id: 'c9', aspect: 'langkah', ref: 'Perkara 7: Langkah Seterusnya', title: 'Kesediaan Berjumpa Wali', sub: 'Berani bersemuka dengan wali secara beradab dan mohon persetujuan.', q: '"Bila awak bersedia untuk berjumpa wali dan keluarga saya secara rasmi?"', tip: 'Lelaki serius tidak berdolak-dalih berbulan-bulan bila diajak jumpa bapa.', rating: 'none' }
+      { id: 'c4', aspect: 'sahsiah', ref: 'Sistem 30 Hari: Integriti', title: 'Konsistensi Kata & Tindakan', sub: 'Adakah perbuatannya selari dengan apa yang dijanjikan, atau sekadar manis mulut?', q: '"Bila awak buat sesuatu janji, bagaimana awak pastikan ia dapat ditepati tepat pada waktunya?"', tip: 'Lihat perkara asas: adakah dia tepati masa temu janji dan tidak membatalkan saat akhir?', rating: 'green' },
+      { id: 'c5', aspect: 'sahsiah', ref: 'Panduan Ta\'aruf Matang', title: 'Penghormatan Maruah & Batas Syarak', sub: 'Menjaga batas pergaulan serta menghormati pendirian dan maruah anda sebagai wanita.', q: '"Bagaimana pandangan awak tentang batasan pergaulan sepanjang tempoh kita berkenalan ini?"', tip: 'Adakah dia menghormati privasi dan waktu rehat/ibadah anda, tanpa mendesak berlebihan.', rating: 'green' },
+
+      // Kerjaya & Kewangan (4)
+      { id: 'c6', aspect: 'kerjaya', ref: 'Perkara 3: Kewangan', title: 'Kestabilan Punca Pendapatan', sub: 'Mempunyai kerjaya atau perniagaan sah dan mencukupi untuk sara hidup.', q: '"Boleh kongsikan bidang kerjaya awak dan perancangan 3 tahun akan datang?"', tip: 'Pastikan punca pendapatannya jelas dan halal, bukan skim cepat kaya atau judi.', rating: 'green' },
+      { id: 'c7', aspect: 'kerjaya', ref: 'Perkara 3: Hak Isteri', title: 'Kefahaman Kewajipan Nafkah Zahir', sub: 'Faham bahawa nafkah asas makan, pakai, kediaman adalah tanggungjawab suami.', q: '"Bagaimana perancangan awak tentang nafkah rumah tangga jika isteri turut bekerja?"', tip: 'Lelaki bertanggungjawab tidak memaksa isteri kongsi 50-50 secara paksa.', rating: 'green' },
+      { id: 'c8', aspect: 'kerjaya', ref: 'Perkara 3: Liabiliti', title: 'Ketelusan Hutang & Liabiliti', sub: 'Adakah dia telus tentang tanggungan pinjaman dan bebas daripada hutang haram?', q: '"Adakah awak ada apa-apa pinjaman berat atau ansuran yang perlu diuruskan?"', tip: 'Ketahui komitmen bulanan agar tidak terbeban selepas nikah.', rating: 'caution' },
+      { id: 'c9', aspect: 'kerjaya', ref: 'Perkara 3: Simpanan', title: 'Tabiat Berbelanja & Simpanan', sub: 'Mempunyai kebijaksanaan mengurus wang, bersederhana dan memiliki dana kecemasan.', q: '"Bila dapat gaji atau untung bisnes, bagaimana awak agihkan simpanan dan belanja harian?"', tip: 'Perhatikan jika dia suka berlagak kaya di media sosial sedangkan hakikat sebaliknya.', rating: 'none' },
+
+      // Kekeluargaan & Anak (4)
+      { id: 'c10', aspect: 'keluarga', ref: 'Perkara 4: Anak', title: 'Penerimaan Anak Pasangan', sub: 'Ikhlas menerima anak-anak pasangan tanpa diskriminasi (terutamanya bagi ibu tunggal).', q: '"Bagaimana perasaan dan kesediaan awak untuk menerima anak saya sebahagian daripada hidup awak?"', tip: 'Bawa bertemu anak dalam suasana santai dan perhatikan kesabarannya.', rating: 'green' },
+      { id: 'c11', aspect: 'keluarga', ref: 'Perkara 6: Keluarga', title: 'Layanan Terhadap Ibu Bapa', sub: 'Menghormati ibu bapa sendiri tanpa bersikap zalim terhadap bakal isteri.', q: '"Bagaimana hubungan awak dengan mak ayah dan adik-beradik awak sekarang?"', tip: 'Cara dia melayan ibu dan adik perempuan cerminan layanannya kepada isteri.', rating: 'none' },
+      { id: 'c12', aspect: 'keluarga', ref: 'Perkara 4: Nafkah Anak', title: 'Tanggungjawab Anak Sendiri (Jika Duda)', sub: 'Melunaskan nafkah anak-anak kandung terdahulu secara adil dan berterusan.', q: '"Bagaimana urusan nafkah dan penjagaan anak-anak daripada perkahwinan lalu diuruskan?"', tip: 'Lelaki yang culas nafkah anak sendiri tidak akan amanah membesarkan anak orang lain.', rating: 'none' },
+      { id: 'c13', aspect: 'keluarga', ref: 'Perkara 6: Mertua', title: 'Sambutan Bakal Keluarga Mertua', sub: 'Keluarga calon lelaki menyambut anda dengan lapang dada tanpa diskriminasi status.', q: '"Adakah mak ayah dan keluarga awak sudah tahu tentang status saya, dan apa reaksi mereka?"', tip: 'Adakah dia jujur memberitahu ibu bapanya atau menyembunyikan status anda?', rating: 'none' },
+
+      // Langkah Seterusnya (2)
+      { id: 'c14', aspect: 'langkah', ref: 'Perkara 7: Wali', title: 'Kesediaan Berjumpa Wali & Keluarga', sub: 'Berani bersemuka dengan wali secara beradab dan mohon persetujuan.', q: '"Bila awak bersedia untuk berjumpa wali dan keluarga saya secara rasmi?"', tip: 'Lelaki serius tidak berdolak-dalih berbulan-bulan bila diajak jumpa bapa.', rating: 'none' },
+      { id: 'c15', aspect: 'langkah', ref: 'Perkara 7: Nikah', title: 'Ketelusan Prosedur Pernikahan', sub: 'Bersedia melengkapkan borang nikah rasmi, ujian saringan kesihatan, dan kursus nikah.', q: '"Bagaimana persediaan awak untuk proses permohonan kebenaran nikah dan saringan kesihatan?"', tip: 'Lihat kesediaannya mematuhi saluran undang-undang syariah yang sah.', rating: 'none' }
     ];
 
     function renderCriteria() {
@@ -441,6 +487,20 @@
         container.appendChild(card);
       });
       updateScore();
+      updateChipCounts();
+    }
+
+    function updateChipCounts() {
+      const allEl = document.getElementById('count-all');
+      if (allEl) allEl.innerText = criteriaData.length;
+      const sEl = document.getElementById('count-sahsiah');
+      if (sEl) sEl.innerText = criteriaData.filter(c => c.aspect === 'sahsiah').length;
+      const kEl = document.getElementById('count-kerjaya');
+      if (kEl) kEl.innerText = criteriaData.filter(c => c.aspect === 'kerjaya').length;
+      const fEl = document.getElementById('count-keluarga');
+      if (fEl) fEl.innerText = criteriaData.filter(c => c.aspect === 'keluarga').length;
+      const lEl = document.getElementById('count-langkah');
+      if (lEl) lEl.innerText = criteriaData.filter(c => c.aspect === 'langkah').length;
     }
 
     function setRating(id, rating) {
